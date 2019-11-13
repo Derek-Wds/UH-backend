@@ -6,14 +6,14 @@
 | --- | --- |
 | ALREADY_EXIST | `{'status': 400, 'msg': 'An user has existed.' }` |
 | DOES_NOT_EXIST | `{'status': 409, 'msg': 'Does not exists.'}` |
-| EMPTY | `{'status': 202, 'msg': 'None'}` |
+| EMPTY | `{'status': 202, 'msg': 'None.'}` |
 | HEADER_NOT_FOUND | `{'status': 999, 'msg': 'Header does not exists.'}` |
 | INVALID_INPUT | `{'status': 422, 'msg': 'Invalid input.'}` |
 | NO_INPUT_400 | `{'status': 400, 'msg': 'No input data provided.'}` |
 | NOT_ADMIN | `{'status': 999, 'msg': 'Admin permission denied.'}` |
 | NOT_FOUND_404 | `{'status': 404, 'msg': 'Resource could not be found.'}` |
 | SERVER_ERROR_500 | `{'status': 500, 'msg': 'An error occured.'}` |
-| UNAUTHORIZED | `{'status': 401, 'msg': 'Unauthorized'}` |
+| UNAUTHORIZED | `{'status': 401, 'msg': 'Unauthorized.'}` |
 | UNKNOWN_ERROR | `{'status': 400, 'msg': 'An unknown error has occured. Please try again.' }` |
 
 ## Register API
@@ -22,10 +22,10 @@
 ### Request Value
 ```
 {
-    "username": "test",
-    "phone": "12345678",
-    "password": "test",
-    "role": "doctor" // Determine whether he/she is a doctor or patient
+    'username': 'test',
+    'phone': '12345678',
+    'password': 'test',
+    'role': 'doctor' // Determine whether he/she is a doctor or patient
 }
 ```
 
@@ -34,10 +34,12 @@
 {
     'status': 200,
     'msg': 'Success',
-    'username': "test",
+    'username': 'test'
 }
 ```
 or Error Messages
+
+<br/><br/>
 
 ## Login API
 **POST** **/login**
@@ -45,12 +47,11 @@ or Error Messages
 ### Request Value
 ```
 {
-    "phone": "12345678",
-    "password": "test",
-    "role": "doctor" // Determine whether he/she is a doctor or patient
+    'phone': '12345678',
+    'password': 'test',
+    'role': 'doctor' // Determine whether he/she is a doctor or patient
 }
 ```
-Or Error Messages
 
 ### Return Value
 ```
@@ -58,6 +59,95 @@ Or Error Messages
     'status': 200,
     'msg': 'Success',
     'role': 'patient',
-    'session': '12345678',
+    'session': '12345678'
 }
 ```
+Or Error Messages
+
+<br/><br/>
+
+## Add Personal Data API
+**POST** **/add/data**
+
+### Request Value
+```
+{
+    'name': 'Test',
+    'email': 'test@test.com',
+    'gender': 'male',
+    'age': 22,
+    'address': 'Century Avenue, Shanghai'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'role': 'patient',
+    'session': '12345678'
+}
+```
+or Error Messages
+
+<br/><br/>
+
+## Add Patient Log Data API
+**POST** **/add/log**
+
+### Request Value
+```
+{
+    'phone': '12345678',
+    'doctor_phone': '11111111',
+    'title': 'Catch a cold', // Title of the log data
+    'content': 'I drink a lot of water today', // Any content of the log 
+    't': 'simple' // Determine whether the data is simple one or detailed one
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'log id': 1,
+    'role': 'patient',
+    'session': '12345678'
+}
+```
+or Error Messages
+
+<br/><br/>
+
+## Add Patient Detailed Log Data API
+**POST** **/add/log**
+
+### Request Value
+```
+{
+    'phone': '12345678',
+    'doctor_phone': '11111111',
+    'title': 'Catch a cold', // Title of the log data
+    'content': 'I drink a lot of water today', // Any content of the log 
+    'app_date': '2019/11/10', // The appointment date with doctor
+    'diseases': {
+        'cold': 'have a low fever for a week',
+        'cough': 'have a sore throat for two days, and wants to drink water all the time'
+    }, // Diseases name with details
+    't': 'detailed' // Determine whether the data is simple one or detailed one
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'log id': 1,
+    'role': 'patient',
+    'session': '12345678'
+}
+```
+or Error Messages

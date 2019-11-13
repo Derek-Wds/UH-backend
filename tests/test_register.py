@@ -1,9 +1,17 @@
 from base import *
 
-# Register staff
-def test_register_staff():
-    data = {'name': 'Liu Cixin', 'public_key': 'notadoctor', 'device_id': 1}
-    resp = s.post(SERVER + 'register/staff', data=data)
+# Register doctor
+def test_register_doctor():
+    data = {'username': 'Liu Cixin', 'phone': '11111111', 'password': 'test', 'role': 'doctor'}
+    resp = s.post(SERVER + '/register', data=data)
     assert resp != None
-    result = json.loads(resp.text)
-    assert result['status'] == 1 and result['message'] == 'Success.'
+    result = json.loads(resp[0])
+    assert result['status'] == 200 and result['msg'] == 'Success'
+
+# Register patient
+def test_register_patient():
+    data = {'username': 'Han Han', 'phone': '12345678', 'password': 'test', 'role': 'patient'}
+    resp = s.post(SERVER + '/register', data=data)
+    assert resp != None
+    result = json.loads(resp[0])
+    assert result['status'] == 200 and result['msg'] == 'Success'

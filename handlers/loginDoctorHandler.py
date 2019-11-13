@@ -30,10 +30,11 @@ def loginDoctorHandler():
         return INVALID_INPUT
 
     session['phone number'] = phone
+    session['role'] = patient.role
 
     return {
         'status': 200,
         'msg': 'Success',
-        'role': 'doctor',
-        'session': session['phone number'],
+        'role': session['role'],
+        'session': session['phone number']
     }, 200

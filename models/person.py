@@ -2,6 +2,7 @@ import os
 import json
 from database.database import db
 from models.base import *
+from models.log import *
 
 class Person(db.Model):
     __tablename__ = 'person'
@@ -9,6 +10,7 @@ class Person(db.Model):
     phone = db.Column('phone', db.String, primary_key=True, unique=True, nullable=False)
     password = db.Column('password', db.String, nullable=False)
     role = db.Column('role', db.String, nullable=False)
+    log = relationship("Log")
     __mapper_args__ = {'polymorphic_on': role}
 
     def __init__(self, username, phone, password, role):

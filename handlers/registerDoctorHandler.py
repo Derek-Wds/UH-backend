@@ -30,10 +30,9 @@ def registerDoctorHandler():
     doctor = Doctor(username, str(phone), str(hashedPassword))
     db.session.add(doctor)
     db.session.commit()
-    print(doctor)
 
     return {
         'status': 200,
         'msg': 'Success',
-        'username': username,
+        'username': username
     }, 200

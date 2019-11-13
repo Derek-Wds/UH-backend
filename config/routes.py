@@ -7,7 +7,8 @@ def init_routes(app):
 
     api.add_resource(RegisterAuth, "/register")
     api.add_resource(LoginAuth, '/login')
-    api.add_resource()
+    api.add_resource(AddLog, '/add/log')
+    api.add_resource(AddPersonalData, '/add/data')
 
 
 # required login
