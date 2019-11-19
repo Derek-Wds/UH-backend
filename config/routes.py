@@ -1,6 +1,7 @@
 from flask_restful import Api
 from resources import *
 from error.errors import *
+from config.auth import auth
 
 def init_routes(app):
     api = Api(app)

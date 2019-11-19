@@ -2,13 +2,12 @@ import logging
 from flask import request, session
 from resources import *
 from flask_restful import Resource
-from config.auth import *
 from error.errors import *
 from database.database import db
 from models.person import *
 
 class GetPersonalData(Resource):
-    @auth.login_required
+    @login_required
     def get(self):       
         try:
             requestData = request.get_json()
@@ -44,14 +43,14 @@ class GetPersonalData(Resource):
             'session': session['phone number'],
         }, 200
 
-    @auth.login_required
+    @login_required
     def post(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def put(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def delete(self):
         return EMPTY
