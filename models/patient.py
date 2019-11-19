@@ -3,14 +3,12 @@ from database.database import db
 from models.base import *
 from models.person import *
 
-class Patient(Person):
+class Patient(Person, Name, Email):
     __tablename__ = 'patient'
     __mapper_args__ = {'polymorphic_identity': 'patient'}
-    name = db.Column('name', db.String, default = '')
-    email = db.Column('email', db.String, default = '')
     gender = db.Column('gender', db.String, default = '')
     age = db.Column('age', db.Integer, default = -1)
-    address = db.Column('address', db.String, default = ''
+    address = db.Column('address', db.String, default = '')
 
     def __init__(self, username, phone, password):
         self.username = username

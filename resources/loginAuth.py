@@ -9,11 +9,14 @@ class LoginAuth(Resource):
         return EMPTY
 
     def post(self):
-        requestData = request.get_json()
-        role = requestData["role"]
-        loginHandler = loginHandlerFactory(role)
-        
-        return loginHandler()
+        try:
+            requestData = request.get_json()
+            role = requestData["role"]
+            loginHandler = loginHandlerFactory(role)
+            
+            return loginHandler()
+        except Exception as e:
+            return INVALID_INPUT
 
     def put(self):
         return EMPTY

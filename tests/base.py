@@ -1,6 +1,12 @@
 import requests, json, pytest
-from flask import Flask
+from flask import Flask, request, session
+from pytest_regressions import data_regression
+from app import *
 
-SERVER = 'http://127.0.0.1:5000/'
+app = create_app()
+app.testing = True
+init_routes(app)
 
-s = requests.Session()
+global ID
+global DID
+global DDID

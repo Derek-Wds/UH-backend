@@ -10,9 +10,9 @@ def loginDoctorHandler():
     try:
         requestData = request.get_json()
         phone = requestData["phone"].strip()
-        plaintextPasword = requestData["password"].strip()
+        plaintextPassword = requestData["password"].strip()
         hashedPassword = hashlib.sha256(
-            plaintextPasword.encode("utf-8")).hexdigest()
+            plaintextPassword.encode("utf-8")).hexdigest()
 
     except Exception as why:
         logging.info("Request is wrong: " + str(why))
@@ -30,7 +30,7 @@ def loginDoctorHandler():
         return INVALID_INPUT
 
     session['phone number'] = phone
-    session['role'] = patient.role
+    session['role'] = doctor.role
 
     return {
         'status': 200,

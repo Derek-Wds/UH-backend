@@ -6,7 +6,7 @@ from flask_session import Session
 from flask_cors import CORS
 from database.database import db
 from config import *
-
+from models import *
 
 def create_app():
     app = Flask(__name__)

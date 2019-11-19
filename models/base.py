@@ -3,6 +3,8 @@ sys.path.insert(0, os.path.abspath('..'))
 import json
 from flask import Flask, request, render_template, jsonify
 from sqlalchemy.ext import mutable
+from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import backref
 from app import db
 
 # class for parse json file into db

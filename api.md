@@ -4,17 +4,17 @@
 
 | Error type | Code |
 | --- | --- |
-| ALREADY_EXIST | `{'status': 400, 'msg': 'An user has existed.' }` |
+| ALREADY_EXIST | `{'status': 402, 'msg': 'An user has existed.' }` |
 | DOES_NOT_EXIST | `{'status': 409, 'msg': 'Does not exists.'}` |
 | EMPTY | `{'status': 202, 'msg': 'None.'}` |
 | HEADER_NOT_FOUND | `{'status': 999, 'msg': 'Header does not exists.'}` |
 | INVALID_INPUT | `{'status': 422, 'msg': 'Invalid input.'}` |
-| NO_INPUT_400 | `{'status': 400, 'msg': 'No input data provided.'}` |
+| NO_INPUT | `{'status': 400, 'msg': 'No input data provided.'}` |
 | NOT_ADMIN | `{'status': 999, 'msg': 'Admin permission denied.'}` |
-| NOT_FOUND_404 | `{'status': 404, 'msg': 'Resource could not be found.'}` |
-| SERVER_ERROR_500 | `{'status': 500, 'msg': 'An error occured.'}` |
+| NOT_FOUND | `{'status': 404, 'msg': 'Resource could not be found.'}` |
+| SERVER_ERROR | `{'status': 500, 'msg': 'An error occured.'}` |
 | UNAUTHORIZED | `{'status': 401, 'msg': 'Unauthorized.'}` |
-| UNKNOWN_ERROR | `{'status': 400, 'msg': 'An unknown error has occured. Please try again.' }` |
+| UNKNOWN_ERROR | `{'status': 403, 'msg': 'An unknown error has occured. Please try again.' }` |
 
 ## Register API
 **POST**  **/register**
@@ -63,6 +63,26 @@ or Error Messages
 }
 ```
 Or Error Messages
+
+<br/><br/>
+
+## Logout API
+**POST** **/logout**
+
+### Request Value
+```
+None
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'You have been successfully logged out.'
+}
+```
+or Error Messages
+
 
 <br/><br/>
 
@@ -151,3 +171,86 @@ or Error Messages
 }
 ```
 or Error Messages
+
+
+<br/><br/>
+
+## Get Patient Personal Data API
+**GET** **/get/data**
+
+### Request Value
+```
+{
+    'phone': '12345678'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': {
+        'name': 'test',
+        'email': 'test@test.com',
+        'gender': 'male',
+        'age': 22,
+        'address': 'Century Avenue, Shanghai'
+    },
+    'role': 'doctor',
+    'session': '11111111'
+}
+```
+
+<br/><br/>
+
+## Add Reminder To Patient API
+**POST** **/add/reminder**
+
+### Request Value
+```
+{
+    'phone': '12345678',
+    'message': 'Rememeber to take medicine today!'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'role': 'doctor',
+    'session': '111111111'
+}
+```
+
+<br/><br/>
+
+## Add Diagnosis API
+**POST** **/add/diagnosis**
+
+### Request Value
+```
+{
+    'phone': '12345678',
+    'doctor_phone': '11111111',
+    'title': 'Catch a cold', // Title of the diagnosis data
+    'content': 'The patient has a fever', // Any content of the diagnosis
+    'diseases': {
+        'cold': 'have a low fever for a week',
+        'cough': 'have a sore throat for two days, and wants to drink water all the time'
+    } // Diseases name with details
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'diagnosis id': 1,
+    'role': 'doctor',
+    'session': '11111111'
+}
+```

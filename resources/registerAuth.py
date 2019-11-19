@@ -9,11 +9,14 @@ class RegisterAuth(Resource):
         return EMPTY
 
     def post(self):
-        requestData = request.get_json()
-        role = requestData["role"]
-        registerHandler = registerHandlerFactory(role)
-        
-        return registerHandler()
+        try:
+            requestData = request.get_json()
+            role = requestData["role"]
+            registerHandler = registerHandlerFactory(role)
+            
+            return registerHandler()
+        except Exception as e:
+            return INVALID_INPUT
 
     def put(self):
         return EMPTY

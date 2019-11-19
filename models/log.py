@@ -6,8 +6,8 @@ from models.base import *
 class Log(db.Model):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
-    patient_phone = db.Column(db.String, db.ForeignKey('patient.phone'), nullable = False)
-    doctor_phone = db.Column(db.String, db.ForeignKey('doctor.phone'), nullable = False)
+    patient_phone = db.Column('patient_phone', db.String, nullable = False)
+    doctor_phone = db.Column('doctor_phone', db.String, nullable = False)
     patient_name = db.Column('patient_name', db.String, nullable = False)
     doctor_name = db.Column('doctor_name', db.String, nullable = False)
     title = db.Column('title', db.String, nullable = False)
@@ -30,3 +30,13 @@ class Log(db.Model):
     @property
     def profile(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+class Time(object):
+    @declared_attr
+    def time(cls):
+        return cls.__table__.c.get('time', db.Column(db.TIMESTAMP, nullable = False))
+
+class Diseases(object):
+    @declared_attr
+    def diseases(cls):
+        return cls.__table__.c.get('diseases', db.Column(JsonEncodedDict, nullable = False))

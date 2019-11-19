@@ -2,7 +2,6 @@ import os
 import json
 from database.database import db
 from models.base import *
-from models.log import *
 
 class Person(db.Model):
     __tablename__ = 'person'
@@ -10,7 +9,6 @@ class Person(db.Model):
     phone = db.Column('phone', db.String, primary_key=True, unique=True, nullable=False)
     password = db.Column('password', db.String, nullable=False)
     role = db.Column('role', db.String, nullable=False)
-    log = relationship("Log")
     __mapper_args__ = {'polymorphic_on': role}
 
     def __init__(self, username, phone, password, role):
@@ -25,3 +23,13 @@ class Person(db.Model):
     @property
     def profile(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+class Name(object):
+    @declared_attr
+    def name(cls):
+        return cls.__table__.c.get('name', db.Column(db.String, default = ''))
+
+class Email(object):
+    @declared_attr
+    def email(cls):
+        return cls.__table__.c.get('email', db.Column(db.String, default = ''))
