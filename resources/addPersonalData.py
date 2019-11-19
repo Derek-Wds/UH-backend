@@ -30,6 +30,9 @@ class AddPersonalData(Resource):
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
+        if phone != session['phone number']:
+            return UNAUTHORIZED
+        
         patient = Person.query.filter_by(phone=phone).first()
 
         if patient is None:
