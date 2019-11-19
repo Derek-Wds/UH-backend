@@ -9,11 +9,7 @@ from models.person import *
 
 class GetPersonalData(Resource):
     @auth.login_required
-    def get(self):
-        role = session['role']
-        if role == 'patient':
-            return UNAUTHORIZED
-        
+    def get(self):       
         try:
             requestData = request.get_json()
             patient_phone = requestData['phone']
@@ -21,6 +17,11 @@ class GetPersonalData(Resource):
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
+
+        role = session['role'] 
+        if role == 'patient':
+            if patient_phone != session['phone number']:
+                return UNAUTHORIZED
         
         patient = Person.query.filter_by(phone=patient_phone).first()
 
