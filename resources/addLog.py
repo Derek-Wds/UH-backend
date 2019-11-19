@@ -7,11 +7,11 @@ from config.auth import *
 from error.errors import *
 
 class AddLog(Resource):
-    @auth.login_required
+    @login_required
     def get(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def post(self):
         role = session['role']
         if role == 'doctor':
@@ -22,10 +22,10 @@ class AddLog(Resource):
         
         return logHandler()
 
-    @auth.login_required
+    @login_required
     def put(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def delete(self):
         return EMPTY

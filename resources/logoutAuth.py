@@ -7,11 +7,11 @@ from error.errors import *
 from config.auth import *
 
 class LogoutAuth(Resource):
-    @auth.login_required
+    @login_required
     def get(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def post(self):
         if 'phone number ' in session:
             session.pop('phone number', None)
@@ -24,10 +24,10 @@ class LogoutAuth(Resource):
             'msg': 'You have been successfully logged out.'
         }, 200
 
-    @auth.login_required
+    @login_required
     def put(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def delete(self):
         return EMPTY

@@ -2,6 +2,7 @@ import logging
 from flask import request, session
 from resources import *
 from flask_restful import Resource
+from config.auth import *
 from error.errors import *
 from database.database import db
 from models.person import *

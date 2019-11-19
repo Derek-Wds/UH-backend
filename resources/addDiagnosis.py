@@ -8,11 +8,11 @@ from database.database import db
 from models.person import *
 
 class AddDiagnosis(Resource):
-    @auth.login_required
+    @login_required
     def get(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def post(self):
         role = session['role']
         if role == 'patient':
@@ -58,10 +58,10 @@ class AddDiagnosis(Resource):
             'session': session['phone number'],
         }, 200
 
-    @auth.login_required
+    @login_required
     def put(self):
         return EMPTY
 
-    @auth.login_required
+    @login_required
     def delete(self):
         return EMPTY

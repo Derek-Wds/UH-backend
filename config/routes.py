@@ -14,12 +14,3 @@ def init_routes(app):
     api.add_resource(GetPersonalData, '/get/data')
     api.add_resource(AddReminder, '/add/reminder')
     api.add_resource(AddDiagnosis, '/add/diagnosis')
-
-# required login
-def login_required(f):
-    @wraps(f)
-    def dec(*args, **kwargs):
-        if not "phone number" in session:
-            return UNAUTHORIZED
-        return f(*args, **kwargs)
-    return dec
