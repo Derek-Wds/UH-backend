@@ -176,7 +176,7 @@ or Error Messages
 <br/><br/>
 
 ## Get Patient Personal Data API
-**GET** **/get/data**
+**POST** **/get/data**
 
 ### Request Value
 ```

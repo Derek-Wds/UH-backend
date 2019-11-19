@@ -10,6 +10,10 @@ from models.person import *
 class GetPersonalData(Resource):
     @login_required
     def get(self):       
+        return EMPTY
+
+    @login_required
+    def post(self):
         try:
             requestData = request.get_json()
             patient_phone = requestData['phone']
@@ -43,10 +47,6 @@ class GetPersonalData(Resource):
             'role': session['role'],
             'session': session['phone number'],
         }, 200
-
-    @login_required
-    def post(self):
-        return EMPTY
 
     @login_required
     def put(self):
