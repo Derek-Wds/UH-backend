@@ -181,7 +181,8 @@ or Error Messages
 ### Request Value
 ```
 {
-    'phone': '12345678'
+    'phone': '12345678',
+    'role': 'doctor'
 }
 ```
 

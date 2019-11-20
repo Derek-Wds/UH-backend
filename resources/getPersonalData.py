@@ -26,6 +26,10 @@ class GetPersonalData(Resource):
         if role == 'patient':
             if patient_phone != session['phone number']:
                 return UNAUTHORIZED
+        else:
+            doctor = Person.query.filter_by(phone=session['phone number']).first()
+            if doctor.role != 'doctor':
+                return UNAUTHORIZED
         
         patient = Person.query.filter_by(phone=patient_phone).first()
 
