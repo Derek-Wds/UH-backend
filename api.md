@@ -119,8 +119,6 @@ or Error Messages
 ### Request Value
 ```
 {
-    'phone': '12345678',
-    'doctor_phone': '11111111',
     'title': 'Catch a cold', // Title of the log data
     'content': 'I drink a lot of water today', // Any content of the log 
     't': 'simple' // Determine whether the data is simple one or detailed one
@@ -147,14 +145,12 @@ or Error Messages
 ### Request Value
 ```
 {
-    'phone': '12345678',
-    'doctor_phone': '11111111',
     'title': 'Catch a cold', // Title of the log data
     'content': 'I drink a lot of water today', // Any content of the log 
-    'app_date': '2019/11/10', // The appointment date with doctor
-    'diseases': {
-        'cold': 'have a low fever for a week',
-        'cough': 'have a sore throat for two days, and wants to drink water all the time'
+    'date': '2019/11/10', // The appointment date with doctor
+    'data': {
+        'height': '178cm',
+        'body temperatur': '37C'
     }, // Diseases name with details
     't': 'detailed' // Determine whether the data is simple one or detailed one
 }
@@ -181,8 +177,7 @@ or Error Messages
 ### Request Value
 ```
 {
-    'phone': '12345678',
-    'role': 'doctor'
+    'phone': '12345678'
 }
 ```
 

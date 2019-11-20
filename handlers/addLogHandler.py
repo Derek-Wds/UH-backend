@@ -5,12 +5,12 @@ from flask import request, session
 from database.database import db
 from error.errors import *
 from models.log import *
+from models.person import *
 
 def addLogHandler():
     try:
         requestData = request.get_json()
-        patient_phone = requestData["phone"].strip()
-        doctor_phone = requestData['doctor_phone'].strip()
+        patient_phone = session['phone number']
         title = requestData['title'].strip()
         content = requestData['content'].strip()
         t = 'simple'
@@ -19,22 +19,20 @@ def addLogHandler():
         logging.info("Request is wrong: " + str(why))
         return INVALID_INPUT
 
-    if phone is None:
+    if patient_phone is None:
         return INVALID_INPUT
 
     patient = Person.query.filter_by(phone=patient_phone).first()
-    doctor = Person.query.filter_by(phone=doctor_phone).first()
 
-    if patient is None or doctor is None:
+    if patient is None:
         return DOES_NOT_EXIST
     
-    if patient.role != 'patient' or doctor.role != 'doctor':
+    if patient.role != 'patient':
         return INVALID_INPUT
 
     patient_name = patient.name
-    doctor_name = doctor.name
 
-    log = Log(patient_phone, doctor_phone, patient_name, doctor_name, title, content, t)
+    log = Log(patient_phone, patient_name, title, content, t)
     db.session.add(log)
     db.session.commit()
 

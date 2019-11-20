@@ -2,24 +2,21 @@ import os
 import json
 from database.database import db
 from models.base import *
+from datetime import datetime
 
 class Log(db.Model):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
     patient_phone = db.Column('patient_phone', db.String, nullable = False)
-    doctor_phone = db.Column('doctor_phone', db.String, nullable = False)
     patient_name = db.Column('patient_name', db.String, nullable = False)
-    doctor_name = db.Column('doctor_name', db.String, nullable = False)
     title = db.Column('title', db.String, nullable = False)
     content = db.Column('content', db.String, nullable = False)
     t = db.Column('type', db.String, nullable = False)
     __mapper_args__ = {'polymorphic_on': t}
 
-    def __init__(self, patient_phone, doctor_phone, patient_name, doctor_name, title, content, t):
+    def __init__(self, patient_phone, patient_name, title, content, t):
         self.patient_phone = patient_phone
-        self.doctor_phone = doctor_phone
         self.patient_name = patient_name
-        self.doctor_name = doctor_name
         self.title = title
         self.content = content
         self.t = t
@@ -34,9 +31,9 @@ class Log(db.Model):
 class Time(object):
     @declared_attr
     def time(cls):
-        return cls.__table__.c.get('time', db.Column(db.TIMESTAMP, nullable = False))
+        return cls.__table__.c.get('time', db.Column(db.TIMESTAMP, default = datetime.utcnow))
 
 class Diseases(object):
     @declared_attr
     def diseases(cls):
-        return cls.__table__.c.get('diseases', db.Column(JsonEncodedDict, nullable = False))
+        return cls.__table__.c.get('diseases', db.Column(JsonEncodedDict))

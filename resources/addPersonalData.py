@@ -19,7 +19,7 @@ class AddPersonalData(Resource):
         
         try:
             requestData = request.get_json()
-            phone = requestData['phone']
+            phone = session['phone number']
             name = requestData['name'].strip()
             email = requestData['email'].strip()
             gender = requestData['gender'].strip()
@@ -29,9 +29,6 @@ class AddPersonalData(Resource):
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
-        
-        if phone != session['phone number']:
-            return UNAUTHORIZED
         
         patient = Person.query.filter_by(phone=phone).first()
 

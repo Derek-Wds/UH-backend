@@ -14,7 +14,6 @@ class Diagnosis(Log, Time, Diseases):
         self.patient_phone = patient_phone
         self.doctor_name = doctor_name
         self.doctor_phone = doctor_phone
-        self.time = datetime.utcnow
         self.title = title
         self.content = content
         self.diseases = diseases

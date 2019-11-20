@@ -4,7 +4,7 @@ from handlers import *
 
 def addLogHandlerFactory(t):
     if t == 'simple':
-        return addLogHander
+        return addLogHandler
     elif t == 'detailed':
         return addDetailLogHandler
     else:

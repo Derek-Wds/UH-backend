@@ -5,39 +5,36 @@ from flask import request, session
 from database.database import db
 from error.errors import *
 from models.detaillog import *
+from models.person import *
 
 def addDetailLogHandler():
     try:
         requestData = request.get_json()
-        patient_phone = requestData["phone"].strip()
-        doctor_phone = requestData['doctor_phone'].strip()
+        patient_phone = session['phone number']
         title = requestData['title'].strip()
         content = requestData['content'].strip()
-        app_date = requestData['app_date']
-        diseases = requestData['diseases']
+        date = requestData['date']
+        data = requestData['data']
         t = 'detailed'
 
     except Exception as why:
         logging.info("Request is wrong: " + str(why))
         return INVALID_INPUT
 
-    if phone is None:
+    if patient_phone is None:
         return INVALID_INPUT
 
     patient = Person.query.filter_by(phone=patient_phone).first()
-    doctor = Person.query.filter_by(phone=doctor_phone).first()
 
-    if patient is None or doctor is None:
+    if patient is None:
         return DOES_NOT_EXIST
     
-    if patient.role != 'patient' or doctor.role != 'doctor':
+    if patient.role != 'patient':
         return INVALID_INPUT
 
     patient_name = patient.name
-    doctor_name = doctor.name
 
-    dlog = DetailedLog(patient_phone, patient_name, patient_phone, doctor_name, doctor_phone, \
-        app_date, title, content, diseases)
+    dlog = DetailedLog(patient_phone, patient_name, patient_phone, date, title, content, data)
     db.session.add(dlog)
     db.session.commit()
 

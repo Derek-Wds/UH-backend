@@ -17,7 +17,7 @@ class AddLog(Resource):
         if role == 'doctor':
             return UNAUTHORIZED
         requestData = request.get_json()
-        t = requestData["type"]
+        t = requestData["t"]
         logHandler = addLogHandlerFactory(t)
         
         return logHandler()
