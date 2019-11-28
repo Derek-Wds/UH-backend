@@ -16,7 +16,7 @@ class GetPersonalData(Resource):
     def post(self):
         try:
             requestData = request.get_json()
-            patient_phone = requestData['phone']
+            phone = requestData['phone']
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
@@ -24,21 +24,21 @@ class GetPersonalData(Resource):
 
         role = session['role'] 
         if role == 'patient':
-            if patient_phone != session['phone number']:
+            if phone != session['phone number']:
                 return UNAUTHORIZED
         
-        patient = Person.query.filter_by(phone=patient_phone).first()
+        person = Person.query.filter_by(phone=phone).first()
 
-        if patient is None:
+        if person is None:
             return DOES_NOT_EXIST
         
         # get attributes
         data = dict()
-        data['name'] = patient.name
-        data['email'] = patient.email
-        data['gender'] = patient.gender
-        data['age'] = patient.age
-        data['address'] = patient.address
+        data['name'] = person.name
+        data['email'] = person.email
+        data['gender'] = person.gender
+        data['age'] = person.age
+        data['address'] = person.address
         
         return {
             'status': 200,

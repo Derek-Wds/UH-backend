@@ -197,6 +197,43 @@ or Error Messages
     'session': '11111111'
 }
 ```
+Or Error Messages
+
+<br/><br/>
+
+## Get Patient Log API
+
+### Request Value
+```
+{
+    'phone': '12345678'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': [
+        {
+            'phone': '12345678',
+            'name': 'test',
+            'title': 'test',
+            'content': 'test'
+        }, {
+            'phone': '12345678',
+            'name': 'test',
+            'title': 'test1',
+            'content': 'test1'
+        }
+        
+    ],
+    'role': 'doctor',
+    'session': '11111111,
+}
+```
+Or Error Messages
 
 <br/><br/>
 

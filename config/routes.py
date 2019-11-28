@@ -10,6 +10,7 @@ def init_routes(app):
     api.add_resource(LoginAuth, '/login')
     api.add_resource(LogoutAuth, '/logout')
     api.add_resource(AddLog, '/add/log')
+    api.add_resource(GetPatientLog, '/get/log')
     api.add_resource(AddPersonalData, '/add/data')
     api.add_resource(GetPersonalData, '/get/data')
     api.add_resource(AddReminder, '/add/reminder')

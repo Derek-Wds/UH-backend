@@ -6,9 +6,6 @@ from models.person import *
 class Patient(Person, Name, Email):
     __tablename__ = 'patient'
     __mapper_args__ = {'polymorphic_identity': 'patient'}
-    gender = db.Column('gender', db.String, default = '')
-    age = db.Column('age', db.Integer, default = -1)
-    address = db.Column('address', db.String, default = '')
 
     def __init__(self, username, phone, password):
         self.username = username
