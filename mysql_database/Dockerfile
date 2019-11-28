@@ -1,13 +1,10 @@
-FROM mysql/mysql-server:latest
+FROM postgres:9.4
 
-ENV MYSQL_USER=mysql \
-    MYSQL_DATA_DIR=/var/lib/mysql \
-    MYSQL_RUN_DIR=/run/mysqld \
-    MYSQL_LOG_DIR=/var/log/mysql \
-    MYSQL_ROOT_PASSWORD=PASSWORD
+ENV POSTGRES_USER=root \
+    POSTGRES_PASSWORD=PASSWORD \
+    POSTGRES_DB=ehr
 
-EXPOSE 3306/tcp
+EXPOSE 5432/tcp
 
-ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["mysqld"]
+# And add ``listen_addresses`` to ``/etc/postgresql/postgresql.conf``
+RUN echo "listen_addresses='*'" >> /etc/postgresql/postgresql.conf
