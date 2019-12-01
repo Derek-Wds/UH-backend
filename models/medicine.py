@@ -5,7 +5,7 @@ from models.base import *
 from datetime import datetime
 
 class Medicine(db.Model):
-    __tablename__ = 'log'
+    __tablename__ = 'medicine'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
     patient_phone = db.Column('patient_phone', db.String, nullable = False)
     patient_name = db.Column('patient_name', db.String, nullable = False)

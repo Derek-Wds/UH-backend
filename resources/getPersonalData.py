@@ -23,7 +23,7 @@ class GetPersonalData(Resource):
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
 
-        if phone != session['phone number']:
+        if role == 'patient' and phone != session['phone number']:
             return UNAUTHORIZED
         
         person = Person.query.filter_by(phone=phone).first()
