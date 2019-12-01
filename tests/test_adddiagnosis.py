@@ -7,6 +7,7 @@ def test_add_diagnosis(data_regression):
         'doctor_phone': '11111111',
         'title': 'Catch a cold',
         'content': 'I drink a lot of water today',
+        'date': json.dumps(datetime(2020, 5, 17).__str__()),
         'diseases': {
             'cold': 'have a low fever for a week',
             'cough': 'have a sore throat for two days, and wants to drink water all the time'
@@ -15,6 +16,7 @@ def test_add_diagnosis(data_regression):
     with app.test_client() as c:
         with c.session_transaction() as session:
             session['role'] = 'doctor'
+            session['phone number'] = '11111111'
         resp = c.post('/add/diagnosis', data=json.dumps(data),
                        content_type='application/json')
         assert resp != None

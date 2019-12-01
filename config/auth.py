@@ -1,6 +1,7 @@
 from flask_httpauth import HTTPTokenAuth
 from functools import wraps
 from flask import session
+from error.errors import *
 
 auth = HTTPTokenAuth('Protection')
 

@@ -8,12 +8,13 @@ class Diagnosis(Log, Time, Diseases):
     __tablename__ = 'diagnosis'
     __mapper_args__ = {'polymorphic_identity': 'diagnosis'}
 
-    def __init__(self, phone, patient_name, patient_phone, doctor_name, doctor_phone, title, content, diseases):
+    def __init__(self, phone, patient_name, patient_phone, doctor_name, doctor_phone, date, title, content, diseases):
         self.phone_id = phone
         self.patient_name = patient_name
         self.patient_phone = patient_phone
         self.doctor_name = doctor_name
         self.doctor_phone = doctor_phone
+        self.time = date
         self.title = title
         self.content = content
         self.diseases = diseases

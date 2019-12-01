@@ -6,6 +6,7 @@ from config.auth import *
 from error.errors import *
 from database.database import db
 from models.person import *
+from models.diagnosis import *
 
 class AddDiagnosis(Resource):
     @login_required
@@ -22,6 +23,7 @@ class AddDiagnosis(Resource):
             requestData = request.get_json()
             patient_phone = requestData['phone'].strip()
             doctor_phone = requestData['doctor_phone'].strip()
+            date = requestData['date']
             title = requestData['title'].strip()
             content = requestData['content'].strip()
             diseases = requestData['diseases']
@@ -43,7 +45,7 @@ class AddDiagnosis(Resource):
         doctor_name = doctor.name
 
         diagnosis = Diagnosis(patient_phone, patient_name, patient_phone, doctor_name, doctor_phone,\
-             title, content, diseases)
+             date, title, content, diseases)
         db.session.add(diagnosis)
         db.session.commit()
 

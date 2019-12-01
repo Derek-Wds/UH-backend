@@ -12,6 +12,7 @@ def test_add_log(data_regression):
     with app.test_client() as c:
         with c.session_transaction() as session:
             session['role'] = 'patient'
+            session['phone number'] = '12345678'
         resp = c.post('/add/log', data=json.dumps(data),
                        content_type='application/json')
         assert resp != None
@@ -26,8 +27,8 @@ def test_add_detailed_log(data_regression):
         'doctor_phone': '11111111',
         'title': 'Catch a cold',
         'content': 'I drink a lot of water today',
-        'app_date': json.dumps(datetime(2020, 5, 17).__str__()),
-        'diseases': {
+        'date': json.dumps(datetime(2020, 5, 17).__str__()),
+        'data': {
             'cold': 'have a low fever for a week',
             'cough': 'have a sore throat for two days, and wants to drink water all the time'
         },
@@ -35,6 +36,7 @@ def test_add_detailed_log(data_regression):
     with app.test_client() as c:
         with c.session_transaction() as session:
             session['role'] = 'patient'
+            session['phone number'] = '12345678'
         resp = c.post('/add/log', data=json.dumps(data),
                        content_type='application/json')
         assert resp != None

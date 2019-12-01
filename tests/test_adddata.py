@@ -1,31 +1,39 @@
 from tests.base import *
 
-# Get doctor personal data
-def test_get_doctor_data(data_regression):
+# Add doctor personal data
+def test_add_doctor_data(data_regression):
     data = {
-         'phone': '11111111'
+        'name': 'Liu Cixin',
+        'email': 'test@test.com',
+        'gender': 'male',
+        'age': 35,
+        'address': 'Century Avenue No.1555'
         }
     with app.test_client() as c:
         with c.session_transaction() as session:
             session['role'] = 'doctor'
             session['phone number'] = '11111111'
-        resp = c.post('/get/data', data=json.dumps(data),
+        resp = c.post('/add/data', data=json.dumps(data),
                        content_type='application/json')
         assert resp != None
         result = resp.get_json()
         data_regression.check(result)
 
 
-# Get patient personal data
-def test_get_patient_data(data_regression):
+# Add patient personal data
+def test_add_patient_data(data_regression):
     data = {
-         'phone': '12345678'
+        'name': 'Han Han',
+        'email': 'test2@test.com',
+        'gender': 'male',
+        'age': 22,
+        'address': 'Century Avenue No.1555'
         }
     with app.test_client() as c:
         with c.session_transaction() as session:
             session['role'] = 'patient'
             session['phone number'] = '12345678'
-        resp = c.post('/get/data', data=json.dumps(data),
+        resp = c.post('/add/data', data=json.dumps(data),
                        content_type='application/json')
         assert resp != None
         result = resp.get_json()
