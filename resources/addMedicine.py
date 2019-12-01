@@ -5,44 +5,45 @@ from flask_restful import Resource
 from config.auth import *
 from error.errors import *
 from database.database import db
-from models.person import *
+from models.medicine import *
+from models.patient import *
 
-class GetPersonalData(Resource):
+class AddMedicine(Resource):
     @login_required
-    def get(self):       
+    def get(self):
         return EMPTY
 
     @login_required
     def post(self):
         role = session['role']
+        if role == 'patient':
+            return UNAUTHORIZED
+        
         try:
             requestData = request.get_json()
-            phone = requestData['phone'].strip()
+            patient_phone = requestData['patient_phone'].strip()
+            patient_name = requestData['patient_name'].strip()
+            name = requestData['name'].strip()
+            description = requestData['description'].strip()
+            times = requestData['times']
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
-
-        if phone != session['phone number']:
-            return UNAUTHORIZED
         
-        person = Person.query.filter_by(phone=phone).first()
+        person = Patient.query.filter_by(phone=patient_phone).first()
 
         if person is None:
             return DOES_NOT_EXIST
         
-        # get attributes
-        data = dict()
-        data['name'] = person.name
-        data['email'] = person.email
-        data['gender'] = person.gender
-        data['age'] = person.age
-        data['address'] = person.address
+        # update attributes
+        medicine = Medicine(patient_phone, patient_name, name, description, times)
+        db.session.add(medicine)
+        db.session.commit()
         
         return {
             'status': 200,
             'msg': 'Success',
-            'data': data,
             'role': session['role'],
             'session': session['phone number'],
         }, 200

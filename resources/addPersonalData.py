@@ -5,6 +5,7 @@ from flask_restful import Resource
 from config.auth import *
 from error.errors import *
 from database.database import db
+from models.person import *
 
 class AddPersonalData(Resource):
     @login_required
@@ -21,7 +22,7 @@ class AddPersonalData(Resource):
             email = requestData['email'].strip()
             gender = requestData['gender'].strip()
             age = int(requestData['age'])
-            address = requestData['address']
+            address = requestData['address'].strip()
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))

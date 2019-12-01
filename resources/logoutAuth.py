@@ -9,10 +9,6 @@ from config.auth import *
 class LogoutAuth(Resource):
     @login_required
     def get(self):
-        return EMPTY
-
-    @login_required
-    def post(self):
         if 'phone number ' in session:
             session.pop('phone number', None)
             session.pop('role', None)
@@ -23,6 +19,10 @@ class LogoutAuth(Resource):
             'status': 200,
             'msg': 'You have been successfully logged out.'
         }, 200
+
+    @login_required
+    def post(self):
+        return EMPTY
 
     @login_required
     def put(self):

@@ -21,7 +21,7 @@ def loginDoctorHandler():
     if phone is None or hashedPassword is None:
         return INVALID_INPUT
 
-    doctor = Person.query.filter_by(phone=phone).first()
+    doctor = Doctor.query.filter_by(phone=phone).first()
 
     if doctor is None:
         return DOES_NOT_EXIST

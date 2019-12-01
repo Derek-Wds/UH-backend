@@ -5,51 +5,42 @@ from flask_restful import Resource
 from config.auth import *
 from error.errors import *
 from database.database import db
-from models.log import *
-from models.person import *
+from models.medicine import *
 
-class GetPatientLog(Resource):
+class GetMedicine(Resource):
     @login_required
-    def get(self):       
+    def get(self):
         return EMPTY
 
     @login_required
     def post(self):
+        role = session['role']
         try:
             requestData = request.get_json()
-            phone = requestData['phone']
+            patient_phone = requestData['patient_phone'].strip()
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
 
-        role = session['role']
-        if role == 'patient':
-            if phone != session['phone number']:
-                return UNAUTHORIZED
+        if role == 'patient' and patient_phone != session['phone number']:
+            return UNAUTHORIZED
         
-        person = Person.query.filter_by(phone=phone).first()
+        person = Person.query.filter_by(phone=patient_phone).first()
 
         if person is None:
             return DOES_NOT_EXIST
-
-        if person.role != 'patient':
-            return INVALID_INPUT
         
-        # get log
+        # get attributes
         output = list()
-        logs = Log.query.filter_by(patient_phone=phone).all()
-        for log in logs:
+        pills = Medicine.query.filter_by(patient_phone=patient_phone).all()
+        for pill in pills:
             data = dict()
-            data['phone'] = log.patient_phone
-            data['name'] = log.patient_name
-            data['title'] = log.title
-            data['content'] = log.content
-            if log.t == 'detailed':
-                data['date'] = log.time
-                data['data'] = log.diseases
-            else:
-                pass
+            data['patient_phone'] = pill.patient_phone
+            data['patient_name'] = pill.patient_name
+            data['name'] = pill.name
+            data['description'] = pill.description
+            data['times'] = pill.times
             output.append(data)
         
         return {

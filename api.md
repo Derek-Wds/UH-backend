@@ -67,12 +67,7 @@ Or Error Messages
 <br/><br/>
 
 ## Logout API
-**POST** **/logout**
-
-### Request Value
-```
-None
-```
+**GET** **/logout**
 
 ### Return Value
 ```
@@ -257,6 +252,7 @@ Or Error Messages
     'session': '111111111'
 }
 ```
+Or Error Messages
 
 <br/><br/>
 
@@ -287,3 +283,70 @@ Or Error Messages
     'session': '11111111'
 }
 ```
+Or Error Messages
+
+<br/><br/>
+
+## Add Medicine API
+**POST** **/add/medicine**
+
+### Request Value
+```
+{
+    'patient_phone': '12345678',
+    'patient_name': 'test',
+    'name': 'aspirin',
+    'description': 'test',
+    'times': [
+        '9:00 A.M.',
+        '12:00 P.M.',
+        '6:00 P.M.'
+    ],
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'role': 'doctor',
+    'session': '11111111'
+}
+```
+Or Error Messages
+
+
+<br/><br/>
+
+## Get Medicine API
+**POST** **/get/medicine**
+
+### Request Value
+```
+    'patient_phone': '12345678'
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': [
+        {
+            'patient_phone': '12345678',
+            'patient_name': 'test',
+            'name': 'aspirin',
+            'description': 'test',
+            'times': [
+                '9:00 A.M.',
+                '12:00 P.M.',
+                '6:00 P.M.'
+            ]
+        }
+    ],
+    'role': 'patient',
+    'session': '12345678',
+}
+```
+Or Error Messages

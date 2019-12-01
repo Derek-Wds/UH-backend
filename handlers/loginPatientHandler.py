@@ -4,7 +4,7 @@ from flask_restful import Resource
 from flask import request, session
 from database.database import db
 from error.errors import *
-from models.doctor import *
+from models.patient import *
 
 def loginPatientHandler():
     try:
@@ -21,7 +21,7 @@ def loginPatientHandler():
     if phone is None or hashedPassword is None:
         return INVALID_INPUT
 
-    patient = Person.query.filter_by(phone=phone).first()
+    patient = Patient.query.filter_by(phone=phone).first()
 
     if patient is None:
         return DOES_NOT_EXIST

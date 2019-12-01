@@ -15,3 +15,5 @@ def init_routes(app):
     api.add_resource(GetPersonalData, '/get/data')
     api.add_resource(AddReminder, '/add/reminder')
     api.add_resource(AddDiagnosis, '/add/diagnosis')
+    api.add_resource(AddMedicine, '/add/medicine')
+    api.add_resource(GetMedicine, '/get/medicine')
