@@ -45,8 +45,8 @@ class GetPatientLog(Resource):
             data['name'] = log.patient_name
             data['title'] = log.title
             data['content'] = log.content
+            data['date'] = str(log.time)
             if log.t == 'detailed':
-                data['date'] = log.time
                 data['data'] = log.diseases
             else:
                 pass
