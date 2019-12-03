@@ -4,7 +4,7 @@ from flask_restful import Resource
 from flask import request, session
 from database.database import db
 from error.errors import *
-from models.log import *
+from models.simplelog import *
 from models.person import *
 
 def addLogHandler():
@@ -32,7 +32,7 @@ def addLogHandler():
 
     patient_name = patient.name
 
-    log = Log(patient_phone, patient_name, title, content, t)
+    log = SimpleLog(patient_phone, patient_name, title, content, t)
     db.session.add(log)
     db.session.commit()
 

@@ -7,6 +7,8 @@ from datetime import datetime
 class Diagnosis(Log, Time, Diseases):
     __tablename__ = 'diagnosis'
     __mapper_args__ = {'polymorphic_identity': 'diagnosis'}
+    doctor_phone = db.Column('doctor_phone', db.String)
+    doctor_name = db.Column('doctor_name', db.String)    
 
     def __init__(self, phone, patient_name, patient_phone, doctor_name, doctor_phone, date, title, content, diseases):
         self.phone_id = phone

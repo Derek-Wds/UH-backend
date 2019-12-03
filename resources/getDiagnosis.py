@@ -47,7 +47,7 @@ class GetDiagnosis(Resource):
             data['doctor_name'] = log.doctor_name
             data['title'] = log.title
             data['content'] = log.content
-            data['date'] = log.time
+            data['date'] = str(log.time)
             data['data'] = log.diseases
             output.append(data)
         
