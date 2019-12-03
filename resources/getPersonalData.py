@@ -44,7 +44,7 @@ class GetPersonalData(Resource):
             'msg': 'Success',
             'data': data,
             'role': session['role'],
-            'session': session['phone number'],
+            'session': session['phone number']
         }, 200
 
     @login_required

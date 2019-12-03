@@ -7,5 +7,7 @@ from resources.addPersonalData import *
 from resources.getPersonalData import *
 from resources.addReminder import *
 from resources.addDiagnosis import *
+from resources.getDiagnosis import *
 from resources.addMedicine import *
 from resources.getMedicine import *
+from resources.searchPatient import *

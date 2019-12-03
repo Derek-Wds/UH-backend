@@ -45,7 +45,7 @@ class AddPersonalData(Resource):
             'status': 200,
             'msg': 'Success',
             'role': session['role'],
-            'session': session['phone number'],
+            'session': session['phone number']
         }, 200
 
     @login_required

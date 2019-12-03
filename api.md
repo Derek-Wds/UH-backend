@@ -108,6 +108,36 @@ or Error Messages
 
 <br/><br/>
 
+## Get Patient Personal Data API
+**POST** **/get/data**
+
+### Request Value
+```
+{
+    'phone': '12345678'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': {
+        'name': 'test',
+        'email': 'test@test.com',
+        'gender': 'male',
+        'age': 22,
+        'address': 'Century Avenue, Shanghai'
+    },
+    'role': 'doctor',
+    'session': '11111111'
+}
+```
+Or Error Messages
+
+<br/><br/>
+
 ## Add Patient Log Data API
 **POST** **/add/log**
 
@@ -166,36 +196,6 @@ or Error Messages
 
 <br/><br/>
 
-## Get Patient Personal Data API
-**POST** **/get/data**
-
-### Request Value
-```
-{
-    'phone': '12345678'
-}
-```
-
-### Return Value
-```
-{
-    'status': 200,
-    'msg': 'Success',
-    'data': {
-        'name': 'test',
-        'email': 'test@test.com',
-        'gender': 'male',
-        'age': 22,
-        'address': 'Century Avenue, Shanghai'
-    },
-    'role': 'doctor',
-    'session': '11111111'
-}
-```
-Or Error Messages
-
-<br/><br/>
-
 ## Get Patient Log API
 
 ### Request Value
@@ -220,7 +220,12 @@ Or Error Messages
             'phone': '12345678',
             'name': 'test',
             'title': 'test1',
-            'content': 'test1'
+            'content': 'test1',
+            'date': '2019/11/10'
+            'data': {
+                'height': '178cm',
+                'body temperatur': '37C'
+            }
         }
         
     ],
@@ -266,6 +271,7 @@ Or Error Messages
     'doctor_phone': '11111111',
     'title': 'Catch a cold', // Title of the diagnosis data
     'content': 'The patient has a fever', // Any content of the diagnosis
+    'date': '2019/11/1',
     'diseases': {
         'cold': 'have a low fever for a week',
         'cough': 'have a sore throat for two days, and wants to drink water all the time'
@@ -287,6 +293,46 @@ Or Error Messages
 
 <br/><br/>
 
+## Get Diagnosis API
+**POST** **/get/diagnosis**
+
+### Request Value
+```
+{
+    'phone': '12345678'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': [
+        {
+            'phone': '12345678',
+            'name': 'test',
+            'doctor_phone': '1111111',
+            'doctor_name': 'test1',
+            'title': 'test',
+            'content': 'test',
+            'date': '2019/11/1',
+            'data': {
+                'cold': 'have a low fever for a week',
+                'cough': 'have a sore throat for two days, and wants to drink water all the time'
+            }
+        }
+    ],
+    'role': 'patient',
+    'session': '12345678'
+}
+```
+Or Error Messages
+
+
+
+<br/><br/>
+
 ## Add Medicine API
 **POST** **/add/medicine**
 
@@ -294,14 +340,13 @@ Or Error Messages
 ```
 {
     'patient_phone': '12345678',
-    'patient_name': 'test',
     'name': 'aspirin',
     'description': 'test',
-    'times': [
-        '9:00 A.M.',
-        '12:00 P.M.',
-        '6:00 P.M.'
-    ],
+    'times': {
+        '1': '9:00 A.M.',
+        '2': '12:00 P.M.',
+        '3': '6:00 P.M.'
+    }   
 }
 ```
 
@@ -338,11 +383,11 @@ Or Error Messages
             'patient_name': 'test',
             'name': 'aspirin',
             'description': 'test',
-            'times': [
-                '9:00 A.M.',
-                '12:00 P.M.',
-                '6:00 P.M.'
-            ]
+            'times': {
+                '1': '9:00 A.M.',
+                '2': '12:00 P.M.',
+                '3': '6:00 P.M.'
+            }   
         }
     ],
     'role': 'patient',
@@ -350,3 +395,32 @@ Or Error Messages
 }
 ```
 Or Error Messages
+
+<br/><br/>
+
+## Search Patient API
+**POST** **/search/patient**
+
+### Request Value
+```
+{
+    'phone': '12345678'
+}
+```
+
+### Return Value
+```
+{
+    'status': 200,
+    'msg': 'Success',
+    'data': {
+        'name': 'test',
+        'email': 'test@test.com',
+        'gender': 'male',
+        'age': 22,
+        'address': 'Century Avenue'
+    },
+    'role': 'doctor',
+    'session': '11111111'
+}
+```

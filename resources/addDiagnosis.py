@@ -57,7 +57,7 @@ class AddDiagnosis(Resource):
             'msg': 'Success',
             'diagnosis id': diagnosis.id,
             'role': session['role'],
-            'session': session['phone number'],
+            'session': session['phone number']
         }, 200
 
     @login_required
