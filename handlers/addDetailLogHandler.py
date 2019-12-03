@@ -32,9 +32,7 @@ def addDetailLogHandler():
     if patient.role != 'patient':
         return INVALID_INPUT
 
-    patient_name = patient.name
-
-    dlog = DetailedLog(patient_phone, patient_name, patient_phone, date, title, content, data)
+    dlog = DetailedLog(patient_phone, patient_phone, date, title, content, data)
     db.session.add(dlog)
     db.session.commit()
 

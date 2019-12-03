@@ -30,9 +30,7 @@ def addLogHandler():
     if patient.role != 'patient':
         return INVALID_INPUT
 
-    patient_name = patient.name
-
-    log = SimpleLog(patient_phone, patient_name, title, content, t)
+    log = SimpleLog(patient_phone, title, content, t)
     db.session.add(log)
     db.session.commit()
 

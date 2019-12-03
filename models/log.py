@@ -8,15 +8,13 @@ class Log(db.Model):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
     patient_phone = db.Column('patient_phone', db.String, nullable = False)
-    patient_name = db.Column('patient_name', db.String, nullable = False)
     title = db.Column('title', db.String, nullable = False)
     content = db.Column('content', db.String, nullable = False)
     t = db.Column('type', db.String, nullable = False)
     __mapper_args__ = {'polymorphic_on': t}
 
-    def __init__(self, patient_phone, patient_name, title, content, t):
+    def __init__(self, patient_phone, title, content, t):
         self.patient_phone = patient_phone
-        self.patient_name = patient_name
         self.title = title
         self.content = content
         self.t = t

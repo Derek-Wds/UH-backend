@@ -6,6 +6,7 @@ from config.auth import *
 from error.errors import *
 from database.database import db
 from models.medicine import *
+from models.person import *
 
 class GetMedicine(Resource):
     @login_required
@@ -37,7 +38,7 @@ class GetMedicine(Resource):
         for pill in pills:
             data = dict()
             data['patient_phone'] = pill.patient_phone
-            data['patient_name'] = pill.patient_name
+            data['patient_name'] = person.name
             data['name'] = pill.name
             data['description'] = pill.description
             data['times'] = pill.times

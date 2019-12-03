@@ -40,11 +40,12 @@ class GetDiagnosis(Resource):
         output = list()
         logs = Diagnosis.query.filter_by(patient_phone=phone).all()
         for log in logs:
+            doctor = Person.query.filter_by(phone=log.doctor_phone).first()
             data = dict()
             data['phone'] = log.patient_phone
-            data['name'] = log.patient_name
+            data['name'] = person.name
             data['doctor_phone'] = log.doctor_phone
-            data['doctor_name'] = log.doctor_name
+            data['doctor_name'] = doctor.name
             data['title'] = log.title
             data['content'] = log.content
             data['date'] = str(log.time)

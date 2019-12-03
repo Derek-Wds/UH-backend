@@ -39,7 +39,7 @@ class AddMedicine(Resource):
             return DOES_NOT_EXIST
         
         # update attributes
-        medicine = Medicine(patient_phone, person.name, name, description, times)
+        medicine = Medicine(patient_phone, name, description, times)
         db.session.add(medicine)
         db.session.commit()
         

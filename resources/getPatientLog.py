@@ -42,7 +42,7 @@ class GetPatientLog(Resource):
         for log in logs:
             data = dict()
             data['phone'] = log.patient_phone
-            data['name'] = log.patient_name
+            data['name'] = person.name
             data['title'] = log.title
             data['content'] = log.content
             data['date'] = str(log.time)

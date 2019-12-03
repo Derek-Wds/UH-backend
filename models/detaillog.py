@@ -8,9 +8,8 @@ class DetailedLog(Log, Time, Diseases):
     __tablename__ = 'detailed_log'
     __mapper_args__ = {'polymorphic_identity': 'detailed'}
 
-    def __init__(self, phone, patient_name, patient_phone, date, title, content, diseases):
+    def __init__(self, phone, patient_phone, date, title, content, diseases):
         self.phone_id = phone
-        self.patient_name = patient_name
         self.patient_phone = patient_phone
         self.time = date
         self.title = title
