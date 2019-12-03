@@ -42,6 +42,8 @@ class GetMedicine(Resource):
             data['name'] = pill.name
             data['description'] = pill.description
             data['times'] = pill.times
+            data['start_time'] = str(pill.start_time)
+            data['end_time'] = str(pill.end_time)
             output.append(data)
         
         return {

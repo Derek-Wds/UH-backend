@@ -11,12 +11,16 @@ class Medicine(db.Model):
     name = db.Column('name', db.String, nullable = False)
     description = db.Column('description', db.String, nullable = False)
     times = db.Column('times', JsonEncodedDict, nullable=False)
+    start_time = db.Column('start_time', db.DateTime, nullable = False)
+    end_time = db.Column('end_time', db.DateTime, nullable = False)
 
-    def __init__(self, patient_phone, name, description, times):
+    def __init__(self, patient_phone, name, description, times, start_time, end_time):
         self.patient_phone = patient_phone
         self.name = name
         self.description = description
         self.times = times
+        self.start_time = start_time
+        self.end_time = end_time
 
     def __repr__(self):
         return '<Medicine {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)

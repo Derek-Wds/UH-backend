@@ -25,11 +25,16 @@ class AddMedicine(Resource):
             name = requestData['name'].strip()
             description = requestData['description'].strip()
             times = requestData['times']
+            start_time = requestData['start_time']
+            end_time = requestData['end_time']
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
+        if end_time < start_time:
+            return INVALID_INPUT
+
         person = Patient.query.filter_by(phone=patient_phone).first()
 
         if person.role != 'patient':
@@ -39,7 +44,7 @@ class AddMedicine(Resource):
             return DOES_NOT_EXIST
         
         # update attributes
-        medicine = Medicine(patient_phone, name, description, times)
+        medicine = Medicine(patient_phone, name, description, times, start_time, end_time)
         db.session.add(medicine)
         db.session.commit()
         
