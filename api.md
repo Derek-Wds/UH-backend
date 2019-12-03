@@ -197,7 +197,7 @@ or Error Messages
 <br/><br/>
 
 ## Get Patient Log API
-
+**POST** **/get/log**
 ### Request Value
 ```
 {

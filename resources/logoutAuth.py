@@ -9,7 +9,7 @@ from config.auth import *
 class LogoutAuth(Resource):
     @login_required
     def get(self):
-        if 'phone number ' in session:
+        if 'phone number' in session:
             session.pop('phone number', None)
             session.pop('role', None)
         else:
