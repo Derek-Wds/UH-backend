@@ -22,7 +22,7 @@ class AddDiagnosis(Resource):
         try:
             requestData = request.get_json()
             patient_phone = requestData['phone'].strip()
-            doctor_phone = requestData['doctor_phone'].strip()
+            doctor_phone = session['phone number']
             date = requestData['date']
             title = requestData['title'].strip()
             content = requestData['content'].strip()

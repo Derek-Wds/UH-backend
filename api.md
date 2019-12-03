@@ -268,7 +268,6 @@ Or Error Messages
 ```
 {
     'phone': '12345678',
-    'doctor_phone': '11111111',
     'title': 'Catch a cold', // Title of the diagnosis data
     'content': 'The patient has a fever', // Any content of the diagnosis
     'date': '2019/11/1',

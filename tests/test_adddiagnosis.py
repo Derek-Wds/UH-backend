@@ -4,7 +4,6 @@ from tests.base import *
 def test_add_diagnosis(data_regression):
     data = {
         'phone': '12345678',
-        'doctor_phone': '11111111',
         'title': 'Catch a cold',
         'content': 'I drink a lot of water today',
         'date': json.dumps(datetime(2020, 5, 17).__str__()),
