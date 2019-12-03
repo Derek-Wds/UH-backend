@@ -19,29 +19,29 @@ class SearchPatient(Resource):
             return UNAUTHORIZED
         try:
             requestData = request.get_json()
-            phone = requestData['phone'].strip()
+            name = requestData['name'].strip()
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
-        person = Person.query.filter_by(phone=phone).first()
+        people = Person.query.filter(Person.name.like('%{}%'.format(name))).all()
 
         if person is None:
             return DOES_NOT_EXIST
         
-        # get attributes
-        data = dict()
-        data['name'] = person.name
-        data['email'] = person.email
-        data['gender'] = person.gender
-        data['age'] = person.age
-        data['address'] = person.address
+        # get all matched people
+        output = list()
+        for person in people:
+            data = dict()
+            data['name'] = person.name
+            data['phone'] = person.phone
+            output.append(data)
         
         return {
             'status': 200,
             'msg': 'Success',
-            'data': data,
+            'data': output,
             'role': session['role'],
             'session': session['phone number']
         }, 200

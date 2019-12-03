@@ -403,7 +403,7 @@ Or Error Messages
 ### Request Value
 ```
 {
-    'phone': '12345678'
+    'name': 'test'
 }
 ```
 
@@ -412,13 +412,12 @@ Or Error Messages
 {
     'status': 200,
     'msg': 'Success',
-    'data': {
-        'name': 'test',
-        'email': 'test@test.com',
-        'gender': 'male',
-        'age': 22,
-        'address': 'Century Avenue'
-    },
+    'data': [
+        {
+            'name': 'test',
+            'phone': '12345678'
+        }
+    ],
     'role': 'doctor',
     'session': '11111111'
 }
