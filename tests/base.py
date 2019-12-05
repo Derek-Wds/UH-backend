@@ -10,3 +10,4 @@ init_routes(app)
 global ID
 global DID
 global DDID
+global MID

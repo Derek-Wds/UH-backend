@@ -9,5 +9,6 @@ def test_delete():
         Log.query.filter_by(id=ID).delete()
         Log.query.filter_by(id=DID).delete()
         Log.query.filter_by(id=DDID).delete()
+        Medicine.query.filter_by(id=MID).delete()
 
         db.session.commit()

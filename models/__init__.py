@@ -6,3 +6,4 @@ from models.log import *
 from models.detaillog import *
 from models.simplelog import *
 from models.diagnosis import *
+from models.medicine import *

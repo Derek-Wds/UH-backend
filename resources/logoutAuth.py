@@ -2,7 +2,6 @@ import logging
 from flask import request, session
 from flask_restful import Resource
 from resources import *
-from handlers.loginHandlerFactory import *
 from error.errors import *
 from config.auth import *
 

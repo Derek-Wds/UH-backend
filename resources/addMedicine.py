@@ -51,6 +51,7 @@ class AddMedicine(Resource):
         return {
             'status': 200,
             'msg': 'Success',
+            'medicine id': medicine.id,
             'role': session['role'],
             'session': session['phone number']
         }, 200
