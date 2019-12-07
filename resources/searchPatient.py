@@ -25,9 +25,9 @@ class SearchPatient(Resource):
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
-        people = Patient.query.filter(Person.name.like('%{}%'.format(name))).all()
+        people = Patient.query.filter(Patient.name.like('%{}%'.format(name))).all()
 
-        if person is None:
+        if people is None:
             return DOES_NOT_EXIST
         
         # get all matched people
