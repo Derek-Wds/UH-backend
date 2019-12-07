@@ -4,7 +4,7 @@ from database.database import db
 from models.base import *
 from datetime import datetime
 
-class Log(db.Model, Time, Diseases):
+class Log(db.Model):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
     patient_phone = db.Column('patient_phone', db.String, nullable = False)
