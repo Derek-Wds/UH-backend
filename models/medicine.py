@@ -11,8 +11,8 @@ class Medicine(db.Model):
     name = db.Column('name', db.String, nullable = False)
     description = db.Column('description', db.String, nullable = False)
     times = db.Column('times', JsonEncodedDict, nullable=False)
-    start_time = db.Column('start_time', db.DateTime, nullable = False)
-    end_time = db.Column('end_time', db.DateTime, nullable = False)
+    start_time = db.Column('start_time', db.Date, nullable = False)
+    end_time = db.Column('end_time', db.Date, nullable = False)
 
     def __init__(self, patient_phone, name, description, times, start_time, end_time):
         self.patient_phone = patient_phone

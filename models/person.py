@@ -3,7 +3,7 @@ import json
 from database.database import db
 from models.base import *
 
-class Person(db.Model):
+class Person(db.Model, Name, Email):
     __tablename__ = 'person'
     username = db.Column('username', db.String, nullable=False)
     phone = db.Column('phone', db.String, primary_key=True, unique=True, nullable=False)
