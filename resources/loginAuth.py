@@ -14,7 +14,6 @@ class LoginAuth(Resource):
     def post(self):
         try:
             requestData = request.get_json()
-            role = requestData["role"]
             phone = requestData["phone"].strip()
             plaintextPasword = requestData["password"].strip()
             hashedPassword = hashlib.sha256(

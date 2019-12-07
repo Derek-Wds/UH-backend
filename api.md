@@ -48,8 +48,7 @@ or Error Messages
 ```
 {
     'phone': '12345678',
-    'password': 'test',
-    'role': 'doctor' // Determine whether he/she is a doctor or patient
+    'password': 'test'
 }
 ```
 
