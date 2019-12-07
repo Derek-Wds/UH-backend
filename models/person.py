@@ -3,6 +3,16 @@ import json
 from database.database import db
 from models.base import *
 
+class Name(object):
+    @declared_attr
+    def name(cls):
+        return cls.__table__.c.get('name', db.Column(db.String, default = ''))
+
+class Email(object):
+    @declared_attr
+    def email(cls):
+        return cls.__table__.c.get('email', db.Column(db.String, default = ''))
+
 class Person(db.Model, Name, Email):
     __tablename__ = 'person'
     username = db.Column('username', db.String, nullable=False)
@@ -27,12 +37,3 @@ class Person(db.Model, Name, Email):
     def profile(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-class Name(object):
-    @declared_attr
-    def name(cls):
-        return cls.__table__.c.get('name', db.Column(db.String, default = ''))
-
-class Email(object):
-    @declared_attr
-    def email(cls):
-        return cls.__table__.c.get('email', db.Column(db.String, default = ''))
