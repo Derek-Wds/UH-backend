@@ -4,16 +4,6 @@ from database.database import db
 from models.base import *
 from datetime import datetime
 
-class Time(object):
-    @declared_attr
-    def time(cls):
-        return cls.__table__.c.get('time', db.Column(db.TIMESTAMP, default = datetime.utcnow))
-
-class Diseases(object):
-    @declared_attr
-    def diseases(cls):
-        return cls.__table__.c.get('diseases', db.Column(JsonEncodedDict))
-
 class Log(db.Model, Time, Diseases):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)
@@ -35,3 +25,13 @@ class Log(db.Model, Time, Diseases):
     @property
     def profile(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+class Time(object):
+    @declared_attr
+    def time(cls):
+        return cls.__table__.c.get('time', db.Column(db.TIMESTAMP, default = datetime.utcnow))
+
+class Diseases(object):
+    @declared_attr
+    def diseases(cls):
+        return cls.__table__.c.get('diseases', db.Column(JsonEncodedDict))

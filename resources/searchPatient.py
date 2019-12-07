@@ -5,7 +5,7 @@ from flask_restful import Resource
 from config.auth import *
 from error.errors import *
 from database.database import db
-from models.person import *
+from models import *
 
 class SearchPatient(Resource):
     @login_required
@@ -25,7 +25,7 @@ class SearchPatient(Resource):
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
-        people = Person.query.filter(Person.name.like('%{}%'.format(name))).all()
+        people = Patient.query.filter(Person.name.like('%{}%'.format(name))).all()
 
         if person is None:
             return DOES_NOT_EXIST
