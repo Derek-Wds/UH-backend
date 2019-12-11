@@ -38,6 +38,7 @@ class GetPersonalData(Resource):
         data['gender'] = person.gender
         data['age'] = person.age
         data['address'] = person.address
+        data['image'] = person.image
         
         return {
             'status': 200,

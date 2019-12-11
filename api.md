@@ -128,7 +128,8 @@ or Error Messages
         'email': 'test@test.com',
         'gender': 'male',
         'age': 22,
-        'address': 'Century Avenue, Shanghai'
+        'address': 'Century Avenue, Shanghai',
+        'image': 'www.test.com/image.png'
     },
     'role': 'doctor',
     'session': '11111111'
