@@ -18,9 +18,9 @@ def create_app():
     session.app.session_interface.db.create_all()
     
     # deal with database
-    with app.app_context():
-        db.drop_all()
-        db.create_all()
+    # with app.app_context():
+    #     db.drop_all()
+    #     db.create_all()
 
     return app
 

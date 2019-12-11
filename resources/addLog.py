@@ -46,7 +46,7 @@ class AddLog(Resource):
         if t == 'simple':
             log = SimpleLog(patient_phone, title, content)
         else:
-            log = DetailedLog(patient_phone, patient_phone, date, title, content, data)
+            log = DetailedLog(patient_phone, date, title, content, data)
         db.session.add(log)
         db.session.commit()
 

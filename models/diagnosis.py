@@ -9,8 +9,7 @@ class Diagnosis(Log, Time, Diseases):
     __mapper_args__ = {'polymorphic_identity': 'diagnosis'}
     doctor_phone = db.Column('doctor_phone', db.String)  
 
-    def __init__(self, phone, patient_phone, doctor_phone, date, title, content, diseases):
-        self.phone_id = phone
+    def __init__(self, patient_phone, doctor_phone, date, title, content, diseases):
         self.patient_phone = patient_phone
         self.doctor_phone = doctor_phone
         self.time = date

@@ -41,7 +41,7 @@ class AddDiagnosis(Resource):
         if patient.role != 'patient' or doctor.role != 'doctor':
             return INVALID_INPUT
 
-        diagnosis = Diagnosis(patient_phone, patient_phone, doctor_phone,\
+        diagnosis = Diagnosis(patient_phone, doctor_phone,\
              date, title, content, diseases)
         db.session.add(diagnosis)
         db.session.commit()
