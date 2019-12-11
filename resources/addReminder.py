@@ -27,7 +27,7 @@ class AddReminder(Resource):
             logging.info("Request is wrong: " + str(why))
             return INVALID_INPUT
         
-        patient = Person.query.filter_by(phone=phone).first()
+        patient = Person.query.filter_by(phone=patient_phone).first()
         doctor = Person.query.filter_by(phone=session['phone number']).first()
 
         if patient is None:
