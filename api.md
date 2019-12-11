@@ -90,7 +90,8 @@ or Error Messages
     'email': 'test@test.com',
     'gender': 'male',
     'age': 22,
-    'address': 'Century Avenue, Shanghai'
+    'address': 'Century Avenue, Shanghai',
+    'image': 'www.test.com/image.png'
 }
 ```
 
@@ -388,8 +389,8 @@ Or Error Messages
                 '2': '12:00 P.M.',
                 '3': '6:00 P.M.'
             },
-            'start_time': '2019/01/01/ 23:55:00',
-            'end_time': '2019/02/01/ 01:00:00'
+            'start_time': '2019/01/01/',
+            'end_time': '2019/02/01/'
         }
     ],
     'role': 'patient',

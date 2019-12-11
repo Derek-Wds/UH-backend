@@ -23,6 +23,7 @@ class AddPersonalData(Resource):
             gender = requestData['gender'].strip()
             age = int(requestData['age'])
             address = requestData['address'].strip()
+            image = requestData['image'].strip()
 
         except Exception as why:
             logging.info("Request is wrong: " + str(why))
@@ -39,6 +40,7 @@ class AddPersonalData(Resource):
         person.gender = gender
         person.age = age
         person.address = address
+        person.image = image
         db.session.commit()
         
         return {

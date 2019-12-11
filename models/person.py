@@ -12,6 +12,7 @@ class Person(db.Model):
     gender = db.Column('gender', db.String, default = '')
     age = db.Column('age', db.Integer, default = -1)
     address = db.Column('address', db.String, default = '')
+    image = db.Column('image', db.String, default = '')
     __mapper_args__ = {'polymorphic_on': role}
 
     def __init__(self, username, phone, password, role):
