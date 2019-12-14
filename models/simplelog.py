@@ -15,7 +15,7 @@ class SimpleLog(Log, Time):
         self.t = 'simple'
 
     def __repr__(self):
-        return '<Simple Log File {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)
+        return '<Simple Log File {}>'.format(self.title + '_' + self.patient_phone)
 
     @property
     def profile(self):

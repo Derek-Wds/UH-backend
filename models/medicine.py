@@ -23,7 +23,7 @@ class Medicine(db.Model):
         self.end_time = end_time
 
     def __repr__(self):
-        return '<Medicine {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)
+        return '<Medicine {}>'.format(self.name + '_' + self.patient_phone)
 
     @property
     def profile(self):

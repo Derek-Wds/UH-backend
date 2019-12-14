@@ -19,7 +19,7 @@ class Diagnosis(Log, Time, Diseases):
         self.t = 'diagnosis'
 
     def __repr__(self):
-        return '<Diagnosis File {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)
+        return '<Diagnosis File {}>'.format(self.title + '_' + self.doctor_phone + '_' + self.patient_phone)
 
     @property
     def profile(self):

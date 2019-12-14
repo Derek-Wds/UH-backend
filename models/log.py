@@ -20,7 +20,7 @@ class Log(db.Model):
         self.t = t
 
     def __repr__(self):
-        return '<Log File {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)
+        return '<Log File {}>'.format(self.title + '_' + self.patient_phone)
 
     @property
     def profile(self):

@@ -17,7 +17,7 @@ class DetailedLog(Log, Time, Diseases):
         self.t = 'detailed'
 
     def __repr__(self):
-        return '<Detailed Log File {}>'.format(self.title + '_' + self.doctor_name + '_' + self.patient_name)
+        return '<Detailed Log File {}>'.format(self.title + '_' + self.patient_phone)
 
     @property
     def profile(self):
