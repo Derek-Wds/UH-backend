@@ -7,6 +7,7 @@ from database.database import db
 from error.errors import *
 from models.person import *
 
+# handler for register
 class RegisterAuth(Resource):
     def get(self):
         return EMPTY

@@ -8,6 +8,7 @@ from database.database import db
 from models.medicine import *
 from models.person import *
 
+# handler for getting medicine
 class GetMedicine(Resource):
     @login_required
     def get(self):

@@ -8,6 +8,7 @@ from database.database import db
 from models.log import *
 from models.person import *
 
+# handler for getting patient log
 class GetPatientLog(Resource):
     @login_required
     def get(self):       

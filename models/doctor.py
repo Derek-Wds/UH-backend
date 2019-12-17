@@ -3,6 +3,7 @@ from database.database import db
 from models.base import *
 from models.person import *
 
+# db table for doctor
 class Doctor(Person, Name, Email):
     __tablename__ = 'doctor'
     __mapper_args__ = {'polymorphic_identity': 'doctor'}

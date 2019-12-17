@@ -5,6 +5,7 @@ from resources import *
 from error.errors import *
 from config.auth import *
 
+# handler for logout
 class LogoutAuth(Resource):
     @login_required
     def get(self):

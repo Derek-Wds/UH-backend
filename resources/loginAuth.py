@@ -7,6 +7,7 @@ from database.database import db
 from error.errors import *
 from models import *
 
+# handler for login
 class LoginAuth(Resource):
     def get(self):
         return EMPTY

@@ -3,6 +3,7 @@ from resources import *
 from error.errors import *
 from config.auth import auth
 
+# initialize routing of RESTful APIs
 def init_routes(app):
     api = Api(app)
 

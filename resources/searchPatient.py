@@ -7,6 +7,7 @@ from error.errors import *
 from database.database import db
 from models import *
 
+# handler for searching patients
 class SearchPatient(Resource):
     @login_required
     def get(self):       

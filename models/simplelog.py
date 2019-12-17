@@ -4,6 +4,7 @@ from models.base import *
 from models.log import *
 from datetime import datetime
 
+# db table for simple log
 class SimpleLog(Log, Time):
     __tablename__ = 'simple_log'
     __mapper_args__ = {'polymorphic_identity': 'simple'}

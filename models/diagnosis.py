@@ -4,6 +4,7 @@ from models.base import *
 from models.log import *
 from datetime import datetime
 
+# db table for diagnosis
 class Diagnosis(Log, Time, Diseases):
     __tablename__ = 'diagnosis'
     __mapper_args__ = {'polymorphic_identity': 'diagnosis'}

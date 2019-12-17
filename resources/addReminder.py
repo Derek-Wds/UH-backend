@@ -7,6 +7,7 @@ from error.errors import *
 from database.database import db
 from sms.message import *
 
+# handler for adding reminder
 class AddReminder(Resource):
     @login_required
     def get(self):

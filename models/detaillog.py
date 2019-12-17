@@ -4,6 +4,7 @@ from models.base import *
 from models.log import *
 from datetime import datetime
 
+# db table for detailed log
 class DetailedLog(Log, Time, Diseases):
     __tablename__ = 'detailed_log'
     __mapper_args__ = {'polymorphic_identity': 'detailed'}

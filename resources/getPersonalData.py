@@ -7,6 +7,7 @@ from error.errors import *
 from database.database import db
 from models.person import *
 
+# handler for getting personal data
 class GetPersonalData(Resource):
     @login_required
     def get(self):       

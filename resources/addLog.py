@@ -7,6 +7,7 @@ from database.database import db
 from error.errors import *
 from models import *
 
+# handler for adding log
 class AddLog(Resource):
     @login_required
     def get(self):

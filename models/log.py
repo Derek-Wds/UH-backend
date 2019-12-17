@@ -4,6 +4,7 @@ from database.database import db
 from models.base import *
 from datetime import datetime
 
+# db table for log
 class Log(db.Model):
     __tablename__ = 'log'
     id = db.Column('id', db.Integer, primary_key = True, unique = True, nullable = False)

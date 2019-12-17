@@ -8,6 +8,7 @@ from database.database import db
 from models.diagnosis import *
 from models.person import *
 
+# handler for getting diagnosis
 class GetDiagnosis(Resource):
     @login_required
     def get(self):       
